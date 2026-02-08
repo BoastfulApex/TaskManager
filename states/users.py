@@ -1,5 +1,6 @@
 from aiogram.fsm.state import State, StatesGroup
 
-class UserForm(StatesGroup):
-    go_reg = State()
-    
+class AddTaskState(StatesGroup):
+    waiting_for_date = State()
+    waiting_for_title = State()
+    waiting_for_description = State()

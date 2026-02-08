@@ -67,6 +67,7 @@ def setup_django():
     os.environ.update({'DJANGO_ALLOW_ASYNC_UNSAFE': "true"})
     django.setup()
 
+from reminders import send_hourly_task_reminders  # siz yozgan async funksiya
 
 
 async def main():
@@ -77,7 +78,7 @@ async def main():
 
     from handlers import dp
 
-
+    asyncio.create_task(send_hourly_task_reminders())
     # Botni ishga tushirish
     await on_startup(bot, dp)
     try:
